@@ -55,7 +55,8 @@ function process_event(event){
     if(message.text){
         // Crear un payload para un simple mensaje de texto
         console.log('=========MENSAJE DE ============')
-        console.log(message.text);
+        console.log('Mensaje de ' + senderID);
+        console.log('mensaje: ' + message.text);
     }
    
     // Enviamos el mensaje mediante SendAPI
@@ -67,3 +68,6 @@ function process_event(event){
  
 app.listen(process.env.PORT || 3000, () => console.log('conectado'));
 // EAA9TEaMGrbsBAJMXDt0CEE8d2pv9t1fHNy8XrMMuvuQVVncnV7QYh86Uw0lQZBzWU08HdlYnyBOcXvQoBQXIZCE9kDbmCjgjhrpjDZAGBTb8uFiv6nxQIopt0k3d3ZCZBpNrzH7yuiHEPQZANdKdkFGngtXSL3z6x9GYIrki5goAZDZD
+// mysupersecretpassword
+//
+// https://pure-ocean-03880.herokuapp.com/webhook
