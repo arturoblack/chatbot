@@ -13,7 +13,9 @@ app.use(express.urlencoded({extended: true}));
 app.get("/", function (req, res) {
    res.send("El Chatbot esta  vivo!!!");
 });
-
+app.get("/privacidad", function (req, res) {
+    res.send("<html><body>politica de privacidad</body></html>");
+ });
 // Validacion con facebook
 app.get("/webhook", function (req, res) {
     // Verificar la coincidendia del token
