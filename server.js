@@ -59,6 +59,17 @@ function process_event(event){
         console.log('=========MENSAJE DE ============')
         console.log('Mensaje de ' + senderID);
         console.log('mensaje: ' + message.text);
+        if(message.text){
+            // Crear un payload para un simple mensaje de texto
+    
+            console.log('=========MENSAJE DE ============')
+            console.log(message.text);
+            if(message.text === 'hola') {
+                enviar_texto(senderID, {
+                    "text": 'Hola amigo mio.',
+                });
+            }
+        }
     }
    
     // Enviamos el mensaje mediante SendAPI
@@ -66,6 +77,31 @@ function process_event(event){
  }
  
 
+
+// Funcion donde el chat respondera usando SendAPI
+function enviar_texto(senderID, response){
+    // Construcicon del cuerpo del mensaje
+    let request_body = {
+        "recipient": {
+          "id": senderID
+        },
+        "message": response
+    }
+    
+    // Enviar el requisito HTTP a la plataforma de messenger
+    request({
+        "uri": "https://graph.facebook.com/v2.6/me/messages",
+        "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+          console.log('Mensaje enviado!')
+        } else {
+          console.error("No se puedo enviar el mensaje:" + err);
+        }
+    }); 
+}
 
  
 app.listen(process.env.PORT || 3000, () => console.log('conectado'));
